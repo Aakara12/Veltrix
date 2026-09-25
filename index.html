@@ -138,6 +138,7 @@
       font-weight: 800;
       letter-spacing: 1px;
       transition: 0.25s;
+      display: inline-block;
     }
 
     .primary {
@@ -179,7 +180,7 @@
       margin-bottom: 55px;
     }
 
-    /* CARDS */
+    /* PROJECT CARDS */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -231,6 +232,205 @@
     .card p {
       color: #888;
       line-height: 1.6;
+    }
+
+    /* =========================
+       GAMES
+    ========================= */
+
+    #games {
+      position: relative;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255, 20, 20, 0.12), transparent 30%),
+        #090909;
+      overflow: hidden;
+    }
+
+    .games-header {
+      position: relative;
+      z-index: 2;
+    }
+
+    .games-intro {
+      max-width: 650px;
+      color: #888;
+      line-height: 1.7;
+      font-size: 17px;
+      margin-top: -30px;
+      margin-bottom: 55px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .game-card {
+      position: relative;
+      min-height: 390px;
+      background: linear-gradient(145deg, #161616, #0d0d0d);
+      border: 1px solid #292929;
+      overflow: hidden;
+      padding: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: 0.4s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      border-color: #ff2020;
+      box-shadow: 0 20px 60px rgba(255, 0, 0, 0.13);
+    }
+
+    .game-card::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -100px;
+      top: -100px;
+      background: #ff2020;
+      opacity: 0.08;
+      filter: blur(70px);
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    .game-card:hover::after {
+      opacity: 0.18;
+      transform: scale(1.2);
+    }
+
+    .game-card.featured {
+      min-height: 520px;
+      grid-row: span 2;
+    }
+
+    .game-card.featured::before {
+      content: "FEATURED PROJECT";
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      color: #ff3030;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      border: 1px solid rgba(255, 32, 32, 0.4);
+      padding: 9px 12px;
+      z-index: 3;
+    }
+
+    .game-number {
+      position: absolute;
+      top: 28px;
+      right: 30px;
+      color: #333;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .game-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .game-status {
+      display: inline-block;
+      color: #ff3030;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .game-card h3 {
+      font-size: clamp(32px, 4vw, 55px);
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+
+    .game-card.small h3 {
+      font-size: 32px;
+    }
+
+    .game-card p {
+      max-width: 550px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .game-button {
+      display: inline-block;
+      width: fit-content;
+      padding: 12px 18px;
+      border: 1px solid #333;
+      color: white;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      transition: 0.25s;
+    }
+
+    .game-button:hover {
+      background: #ff2020;
+      border-color: #ff2020;
+    }
+
+    .game-decoration {
+      position: absolute;
+      right: 35px;
+      bottom: 35px;
+      width: 110px;
+      height: 110px;
+      border: 1px solid rgba(255, 32, 32, 0.18);
+      transform: rotate(45deg);
+      transition: 0.5s;
+    }
+
+    .game-card:hover .game-decoration {
+      transform: rotate(135deg) scale(1.15);
+      border-color: rgba(255, 32, 32, 0.5);
+    }
+
+    .game-decoration::before,
+    .game-decoration::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 32, 32, 0.12);
+    }
+
+    .game-decoration::after {
+      inset: 38px;
+      background: rgba(255, 32, 32, 0.08);
+    }
+
+    .games-bottom {
+      margin-top: 22px;
+      padding: 25px;
+      border: 1px solid #202020;
+      background: #0d0d0d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .games-bottom strong {
+      font-size: 15px;
+    }
+
+    .games-bottom span {
+      color: #666;
+      font-size: 13px;
     }
 
     /* ABOUT */
@@ -287,6 +487,7 @@
 
     /* MOBILE */
     @media (max-width: 800px) {
+
       nav {
         padding: 0 5%;
       }
@@ -316,6 +517,24 @@
         grid-template-columns: 1fr;
       }
 
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .game-card.featured {
+        min-height: 430px;
+        grid-row: auto;
+      }
+
+      .game-card {
+        min-height: 330px;
+      }
+
+      .games-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       .about {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -331,6 +550,7 @@
 
 <body>
 
+  <!-- NAVIGATION -->
   <nav>
     <div class="logo">VEL<span>TRIX</span></div>
 
@@ -342,12 +562,16 @@
     </ul>
   </nav>
 
+
   <main>
 
+    <!-- HERO -->
     <section class="hero" id="home">
+
       <div class="glow"></div>
 
       <div class="hero-content">
+
         <div class="tag">INDEPENDENT CREATIVE BRAND</div>
 
         <h1>
@@ -362,40 +586,59 @@
         </p>
 
         <div class="buttons">
-          <a class="button primary" href="#projects">EXPLORE PROJECTS</a>
-          <a class="button secondary" href="#about">ABOUT VELTRIX</a>
+          <a class="button primary" href="#projects">
+            EXPLORE PROJECTS
+          </a>
+
+          <a class="button secondary" href="#about">
+            ABOUT VELTRIX
+          </a>
         </div>
+
       </div>
     </section>
 
 
+    <!-- PROJECTS -->
     <section id="projects">
+
       <div class="section-label">01 / PROJECTS</div>
-      <h2 class="section-title">WHAT WE'RE BUILDING.</h2>
+
+      <h2 class="section-title">
+        WHAT WE'RE BUILDING.
+      </h2>
 
       <div class="cards">
 
         <div class="card">
           <div class="number">01</div>
+
           <h3>Digital Projects</h3>
+
           <p>
             Websites, online platforms and creative digital ideas
             built from scratch.
           </p>
         </div>
 
+
         <div class="card">
           <div class="number">02</div>
+
           <h3>Games</h3>
+
           <p>
             Browser games and interactive experiences designed
             to be simple, fun and addictive.
           </p>
         </div>
 
+
         <div class="card">
           <div class="number">03</div>
+
           <h3>New Ideas</h3>
+
           <p>
             We experiment, test and turn ideas into real projects
             instead of leaving them on paper.
@@ -403,52 +646,162 @@
         </div>
 
       </div>
+
     </section>
 
 
+    <!-- GAMES -->
     <section id="games">
-      <div class="section-label">02 / GAMES</div>
-      <h2 class="section-title">PLAY SOMETHING.</h2>
 
-      <div class="cards">
+      <div class="games-header">
 
-        <div class="card">
-          <div class="number">COMING SOON</div>
-          <h3>VELTRIX GAMES</h3>
-          <p>
-            Our first collection of browser games is currently
-            being developed.
-          </p>
+        <div class="section-label">
+          02 / GAMES
         </div>
 
-        <div class="card">
-          <div class="number">PROJECT 02</div>
-          <h3>TRIVEX</h3>
-          <p>
-            A competitive game project built around quick
-            matches, strategy and progression.
-          </p>
+        <h2 class="section-title">
+          PLAY SOMETHING.
+        </h2>
+
+        <p class="games-intro">
+          VELTRIX is building its own collection of browser games.
+          From quick competitive experiences to bigger projects,
+          this is where our games come to life.
+        </p>
+
+      </div>
+
+
+      <div class="game-grid">
+
+        <!-- TRIVEX -->
+        <div class="game-card featured">
+
+          <div class="game-number">
+            01
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-status">
+              IN DEVELOPMENT
+            </div>
+
+            <h3>TRIVEX</h3>
+
+            <p>
+              A competitive browser game built around
+              quick matches, strategy and progression.
+              The first major game project from VELTRIX.
+            </p>
+
+            <a href="#" class="game-button">
+              VIEW PROJECT →
+            </a>
+
+          </div>
+
+          <div class="game-decoration"></div>
+
         </div>
 
-        <div class="card">
-          <div class="number">MORE</div>
-          <h3>IN DEVELOPMENT</h3>
-          <p>
-            More projects are coming. This space will grow
-            as VELTRIX grows.
-          </p>
+
+        <!-- ARCADE -->
+        <div class="game-card small">
+
+          <div class="game-number">
+            02
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-status">
+              COMING SOON
+            </div>
+
+            <h3>VELTRIX ARCADE</h3>
+
+            <p>
+              A collection of smaller browser games
+              made for quick and fun sessions.
+            </p>
+
+            <a href="#" class="game-button">
+              COMING SOON
+            </a>
+
+          </div>
+
+          <div class="game-decoration"></div>
+
+        </div>
+
+
+        <!-- NEXT GAME -->
+        <div class="game-card small">
+
+          <div class="game-number">
+            03
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-status">
+              CLASSIFIED
+            </div>
+
+            <h3>NEXT PROJECT</h3>
+
+            <p>
+              Another game is already being planned.
+              More information will be revealed later.
+            </p>
+
+            <a href="#" class="game-button">
+              STAY TUNED
+            </a>
+
+          </div>
+
+          <div class="game-decoration"></div>
+
         </div>
 
       </div>
+
+
+      <div class="games-bottom">
+
+        <div>
+          <strong>MORE GAMES ARE COMING.</strong>
+          <br>
+          <span>
+            This page will grow as VELTRIX grows.
+          </span>
+        </div>
+
+        <a href="#contact" class="game-button">
+          WORK WITH US →
+        </a>
+
+      </div>
+
     </section>
 
 
+    <!-- ABOUT -->
     <section class="about" id="about">
 
       <div class="about-text">
-        <div class="section-label">03 / ABOUT</div>
 
-        <h2 class="section-title">TWO MINDS.<br>ONE VISION.</h2>
+        <div class="section-label">
+          03 / ABOUT
+        </div>
+
+        <h2 class="section-title">
+          TWO MINDS.<br>
+          ONE VISION.
+        </h2>
 
         <p>
           VELTRIX is an independent brand created to turn
@@ -459,23 +812,32 @@
           We start small, learn as we build and keep improving
           every project along the way.
         </p>
+
       </div>
 
+
       <div class="big-quote">
+
         START WITH<br>
         <span>NOTHING.</span><br>
         BUILD<br>
         EVERYTHING.
+
       </div>
 
     </section>
 
 
-    <section class="contact">
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
 
-      <div class="section-label">04 / CONTACT</div>
+      <div class="section-label">
+        04 / CONTACT
+      </div>
 
-      <h2 class="section-title">LET'S BUILD.</h2>
+      <h2 class="section-title">
+        LET'S BUILD.
+      </h2>
 
       <p>
         VELTRIX is just getting started.
@@ -483,17 +845,25 @@
       </p>
 
       <a class="button primary" href="mailto:VeltrixAE@hotmail.com">
-  CONTACT VELTRIX
-</a>
+        CONTACT VELTRIX
+      </a>
 
     </section>
 
   </main>
 
 
+  <!-- FOOTER -->
   <footer>
-    <div>© 2026 <strong>VELTRIX</strong></div>
-    <div>BUILD IT. GROW IT. OWN IT.</div>
+
+    <div>
+      © 2026 <strong>VELTRIX</strong>
+    </div>
+
+    <div>
+      BUILD IT. GROW IT. OWN IT.
+    </div>
+
   </footer>
 
 </body>
