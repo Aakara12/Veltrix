@@ -24,18 +24,24 @@
     }
 
     /* NAVIGATION */
+
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       height: 72px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 0 7%;
+
       background: rgba(8, 8, 8, 0.82);
       backdrop-filter: blur(15px);
+
       border-bottom: 1px solid rgba(255,255,255,0.07);
+
       z-index: 1000;
     }
 
@@ -69,47 +75,67 @@
       color: #ff3030;
     }
 
+
     /* HERO */
+
     .hero {
       min-height: 100vh;
+
       display: flex;
       align-items: center;
+
       padding: 130px 7% 80px;
+
       position: relative;
       overflow: hidden;
     }
 
     .glow {
       position: absolute;
+
       width: 550px;
       height: 550px;
+
       background: #e00000;
+
       filter: blur(180px);
+
       opacity: 0.13;
+
       right: -150px;
       top: 50px;
+
       border-radius: 50%;
     }
 
     .hero-content {
       max-width: 900px;
+
       position: relative;
       z-index: 2;
     }
 
     .tag {
       color: #ff2929;
+
       font-size: 13px;
+
       letter-spacing: 4px;
+
       font-weight: 800;
+
       margin-bottom: 25px;
     }
 
     h1 {
       font-size: clamp(65px, 12vw, 150px);
+
       line-height: 0.85;
+
       letter-spacing: -7px;
+
       font-weight: 950;
+
       margin-bottom: 35px;
     }
 
@@ -119,97 +145,138 @@
 
     .hero p {
       max-width: 620px;
+
       color: #aaa;
+
       font-size: 19px;
+
       line-height: 1.7;
+
       margin-bottom: 40px;
     }
 
     .buttons {
       display: flex;
+
       gap: 15px;
+
       flex-wrap: wrap;
     }
 
     .button {
       padding: 15px 25px;
+
       border-radius: 4px;
+
       text-decoration: none;
+
       font-weight: 800;
+
       letter-spacing: 1px;
+
       transition: 0.25s;
+
       display: inline-block;
     }
 
     .primary {
       background: #ff2020;
+
       color: white;
     }
 
     .primary:hover {
       background: #ff4545;
+
       transform: translateY(-3px);
     }
 
     .secondary {
       border: 1px solid #333;
+
       color: white;
     }
 
     .secondary:hover {
       border-color: #ff2020;
+
       color: #ff2020;
     }
 
+
     /* SECTIONS */
+
     section {
       padding: 120px 7%;
     }
 
     .section-label {
       color: #ff2020;
+
       font-size: 12px;
+
       font-weight: 900;
+
       letter-spacing: 4px;
+
       margin-bottom: 15px;
     }
 
     .section-title {
       font-size: clamp(38px, 6vw, 72px);
+
       letter-spacing: -3px;
+
       margin-bottom: 55px;
     }
 
+
     /* PROJECT CARDS */
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 20px;
     }
 
     .card {
       background: #101010;
+
       border: 1px solid #202020;
+
       padding: 35px;
+
       min-height: 260px;
+
       transition: 0.3s;
+
       position: relative;
+
       overflow: hidden;
     }
 
     .card::before {
       content: "";
+
       position: absolute;
+
       left: 0;
       top: 0;
+
       width: 3px;
       height: 0;
+
       background: #ff2020;
+
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-7px);
+
       border-color: #333;
     }
 
@@ -219,20 +286,26 @@
 
     .number {
       color: #555;
+
       font-size: 13px;
+
       font-weight: 800;
+
       margin-bottom: 45px;
     }
 
     .card h3 {
       font-size: 25px;
+
       margin-bottom: 15px;
     }
 
     .card p {
       color: #888;
+
       line-height: 1.6;
     }
+
 
     /* =========================
        GAMES
@@ -240,118 +313,184 @@
 
     #games {
       position: relative;
-      background:
-        radial-gradient(circle at 85% 20%, rgba(255, 20, 20, 0.12), transparent 30%),
-        #090909;
-      overflow: hidden;
-    }
 
-    .games-header {
-      position: relative;
-      z-index: 2;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(255, 20, 20, 0.12),
+          transparent 30%
+        ),
+        #090909;
+
+      overflow: hidden;
     }
 
     .games-intro {
       max-width: 650px;
+
       color: #888;
+
       line-height: 1.7;
+
       font-size: 17px;
+
       margin-top: -30px;
+
       margin-bottom: 55px;
     }
 
+    /*
+      GAME GRID
+
+      Maximum 10 games.
+      We can add games later by copying
+      a .game-card block.
+    */
+
     .game-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 22px;
-      position: relative;
-      z-index: 2;
     }
 
     .game-card {
       position: relative;
-      min-height: 390px;
-      background: linear-gradient(145deg, #161616, #0d0d0d);
+
+      min-height: 350px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #161616,
+          #0d0d0d
+        );
+
       border: 1px solid #292929;
+
       overflow: hidden;
+
       padding: 38px;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: flex-end;
+
       transition: 0.4s ease;
     }
 
     .game-card:hover {
       transform: translateY(-8px);
+
       border-color: #ff2020;
-      box-shadow: 0 20px 60px rgba(255, 0, 0, 0.13);
+
+      box-shadow:
+        0 20px 60px rgba(255, 0, 0, 0.13);
     }
 
     .game-card::after {
       content: "";
+
       position: absolute;
+
       width: 300px;
       height: 300px;
+
       right: -100px;
       top: -100px;
+
       background: #ff2020;
+
       opacity: 0.08;
+
       filter: blur(70px);
+
       border-radius: 50%;
+
       transition: 0.4s;
     }
 
     .game-card:hover::after {
       opacity: 0.18;
+
       transform: scale(1.2);
     }
 
+    /* FIRST GAME = BIG */
+
     .game-card.featured {
       min-height: 520px;
-      grid-row: span 2;
+
+      grid-column: span 2;
     }
 
     .game-card.featured::before {
       content: "FEATURED PROJECT";
+
       position: absolute;
+
       top: 25px;
       left: 25px;
+
       color: #ff3030;
+
       font-size: 10px;
+
       font-weight: 900;
+
       letter-spacing: 3px;
-      border: 1px solid rgba(255, 32, 32, 0.4);
+
+      border: 1px solid rgba(255,32,32,0.4);
+
       padding: 9px 12px;
+
       z-index: 3;
     }
 
     .game-number {
       position: absolute;
+
       top: 28px;
       right: 30px;
+
       color: #333;
+
       font-size: 42px;
+
       font-weight: 900;
+
       line-height: 1;
     }
 
     .game-content {
       position: relative;
+
       z-index: 3;
     }
 
     .game-status {
       display: inline-block;
+
       color: #ff3030;
+
       font-size: 10px;
+
       font-weight: 900;
+
       letter-spacing: 2px;
+
       margin-bottom: 15px;
     }
 
     .game-card h3 {
-      font-size: clamp(32px, 4vw, 55px);
+      font-size: 42px;
+
       letter-spacing: -2px;
+
       margin-bottom: 12px;
     }
 
@@ -361,66 +500,102 @@
 
     .game-card p {
       max-width: 550px;
+
       color: #888;
+
       line-height: 1.6;
+
       margin-bottom: 25px;
     }
 
     .game-button {
       display: inline-block;
+
       width: fit-content;
+
       padding: 12px 18px;
+
       border: 1px solid #333;
+
       color: white;
+
       text-decoration: none;
+
       font-size: 11px;
+
       font-weight: 900;
+
       letter-spacing: 1.5px;
+
       transition: 0.25s;
     }
 
     .game-button:hover {
       background: #ff2020;
+
       border-color: #ff2020;
     }
 
     .game-decoration {
       position: absolute;
+
       right: 35px;
       bottom: 35px;
+
       width: 110px;
       height: 110px;
+
       border: 1px solid rgba(255, 32, 32, 0.18);
+
       transform: rotate(45deg);
+
       transition: 0.5s;
     }
 
     .game-card:hover .game-decoration {
-      transform: rotate(135deg) scale(1.15);
-      border-color: rgba(255, 32, 32, 0.5);
+      transform:
+        rotate(135deg)
+        scale(1.15);
+
+      border-color:
+        rgba(255, 32, 32, 0.5);
     }
 
     .game-decoration::before,
     .game-decoration::after {
       content: "";
+
       position: absolute;
+
       inset: 18px;
-      border: 1px solid rgba(255, 32, 32, 0.12);
+
+      border:
+        1px solid
+        rgba(255, 32, 32, 0.12);
     }
 
     .game-decoration::after {
       inset: 38px;
-      background: rgba(255, 32, 32, 0.08);
+
+      background:
+        rgba(255, 32, 32, 0.08);
     }
 
     .games-bottom {
       margin-top: 22px;
+
       padding: 25px;
+
       border: 1px solid #202020;
+
       background: #0d0d0d;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       gap: 20px;
     }
 
@@ -430,28 +605,42 @@
 
     .games-bottom span {
       color: #666;
+
       font-size: 13px;
     }
 
+
     /* ABOUT */
+
     .about {
       background: #0d0d0d;
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 80px;
+
       align-items: center;
     }
 
     .about-text p {
       color: #999;
+
       line-height: 1.8;
+
       font-size: 17px;
+
       margin-bottom: 20px;
     }
 
     .big-quote {
-      font-size: clamp(35px, 5vw, 65px);
+      font-size:
+        clamp(35px, 5vw, 65px);
+
       line-height: 1;
+
       font-weight: 900;
     }
 
@@ -459,25 +648,37 @@
       color: #ff2020;
     }
 
+
     /* CONTACT */
+
     .contact {
       text-align: center;
     }
 
     .contact p {
       color: #888;
+
       margin: 0 auto 30px;
+
       max-width: 600px;
+
       line-height: 1.7;
     }
 
+
     /* FOOTER */
+
     footer {
       padding: 35px 7%;
+
       border-top: 1px solid #202020;
+
       display: flex;
+
       justify-content: space-between;
+
       color: #555;
+
       font-size: 12px;
     }
 
@@ -485,7 +686,9 @@
       color: #aaa;
     }
 
+
     /* MOBILE */
+
     @media (max-width: 800px) {
 
       nav {
@@ -523,7 +726,8 @@
 
       .game-card.featured {
         min-height: 430px;
-        grid-row: auto;
+
+        grid-column: auto;
       }
 
       .game-card {
@@ -532,149 +736,225 @@
 
       .games-bottom {
         flex-direction: column;
+
         align-items: flex-start;
       }
 
       .about {
         grid-template-columns: 1fr;
+
         gap: 40px;
       }
 
       footer {
         flex-direction: column;
+
         gap: 10px;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
+
   <!-- NAVIGATION -->
+
   <nav>
-    <div class="logo">VEL<span>TRIX</span></div>
+
+    <div class="logo">
+      VEL<span>TRIX</span>
+    </div>
 
     <ul>
-      <li><a href="#home">HOME</a></li>
-      <li><a href="#projects">PROJECTS</a></li>
-      <li><a href="#games">GAMES</a></li>
-      <li><a href="#about">ABOUT</a></li>
+      <li>
+        <a href="#home">HOME</a>
+      </li>
+
+      <li>
+        <a href="#projects">PROJECTS</a>
+      </li>
+
+      <li>
+        <a href="#games">GAMES</a>
+      </li>
+
+      <li>
+        <a href="#about">ABOUT</a>
+      </li>
     </ul>
+
   </nav>
+
 
 
   <main>
 
+
     <!-- HERO -->
+
     <section class="hero" id="home">
 
       <div class="glow"></div>
 
       <div class="hero-content">
 
-        <div class="tag">INDEPENDENT CREATIVE BRAND</div>
+        <div class="tag">
+          INDEPENDENT CREATIVE BRAND
+        </div>
 
         <h1>
           BUILD IT.<br>
+
           <span>GROW IT.</span><br>
+
           OWN IT.
         </h1>
 
         <p>
-          VELTRIX is an independent creative brand building
-          games, digital projects and new ideas from the ground up.
+          VELTRIX is an independent creative brand
+          building games, digital projects and new
+          ideas from the ground up.
         </p>
 
         <div class="buttons">
-          <a class="button primary" href="#projects">
+
+          <a
+            class="button primary"
+            href="#projects"
+          >
             EXPLORE PROJECTS
           </a>
 
-          <a class="button secondary" href="#about">
+          <a
+            class="button secondary"
+            href="#about"
+          >
             ABOUT VELTRIX
           </a>
+
         </div>
 
       </div>
+
     </section>
 
 
+
     <!-- PROJECTS -->
+
     <section id="projects">
 
-      <div class="section-label">01 / PROJECTS</div>
+      <div class="section-label">
+        01 / PROJECTS
+      </div>
 
       <h2 class="section-title">
         WHAT WE'RE BUILDING.
       </h2>
 
+
       <div class="cards">
 
-        <div class="card">
-          <div class="number">01</div>
 
-          <h3>Digital Projects</h3>
+        <div class="card">
+
+          <div class="number">
+            01
+          </div>
+
+          <h3>
+            Digital Projects
+          </h3>
 
           <p>
-            Websites, online platforms and creative digital ideas
-            built from scratch.
+            Websites, online platforms and creative
+            digital ideas built from scratch.
           </p>
+
         </div>
 
 
         <div class="card">
-          <div class="number">02</div>
 
-          <h3>Games</h3>
+          <div class="number">
+            02
+          </div>
+
+          <h3>
+            Games
+          </h3>
 
           <p>
-            Browser games and interactive experiences designed
-            to be simple, fun and addictive.
+            Browser games and interactive experiences
+            designed to be simple, fun and addictive.
           </p>
+
         </div>
 
 
         <div class="card">
-          <div class="number">03</div>
 
-          <h3>New Ideas</h3>
+          <div class="number">
+            03
+          </div>
+
+          <h3>
+            New Ideas
+          </h3>
 
           <p>
-            We experiment, test and turn ideas into real projects
-            instead of leaving them on paper.
+            We experiment, test and turn ideas into
+            real projects instead of leaving them
+            on paper.
           </p>
+
         </div>
+
 
       </div>
 
     </section>
 
 
-    <!-- GAMES -->
+
+    <!-- =========================
+         GAMES
+    ========================== -->
+
     <section id="games">
 
-      <div class="games-header">
-
-        <div class="section-label">
-          02 / GAMES
-        </div>
-
-        <h2 class="section-title">
-          PLAY SOMETHING.
-        </h2>
-
-        <p class="games-intro">
-          VELTRIX is building its own collection of browser games.
-          From quick competitive experiences to bigger projects,
-          this is where our games come to life.
-        </p>
-
+      <div class="section-label">
+        02 / GAMES
       </div>
 
+      <h2 class="section-title">
+        PLAY SOMETHING.
+      </h2>
+
+      <p class="games-intro">
+
+        VELTRIX is building its own collection of
+        browser games. From quick competitive
+        experiences to bigger projects, this is where
+        our games come to life.
+
+      </p>
+
+
+      <!--
+        MAXIMUM 10 GAME SLOTS
+
+        GAME 01
+      -->
 
       <div class="game-grid">
 
-        <!-- TRIVEX -->
+
+        <!-- GAME 01 — TRIVEX -->
+
         <div class="game-card featured">
 
           <div class="game-number">
@@ -687,7 +967,9 @@
               IN DEVELOPMENT
             </div>
 
-            <h3>TRIVEX</h3>
+            <h3>
+              TRIVEX
+            </h3>
 
             <p>
               A competitive browser game built around
@@ -695,7 +977,10 @@
               The first major game project from VELTRIX.
             </p>
 
-            <a href="#" class="game-button">
+            <a
+              href="trivex.html"
+              class="game-button"
+            >
               VIEW PROJECT →
             </a>
 
@@ -706,7 +991,9 @@
         </div>
 
 
-        <!-- ARCADE -->
+
+        <!-- GAME 02 -->
+
         <div class="game-card small">
 
           <div class="game-number">
@@ -719,14 +1006,19 @@
               COMING SOON
             </div>
 
-            <h3>VELTRIX ARCADE</h3>
+            <h3>
+              VELTRIX ARCADE
+            </h3>
 
             <p>
               A collection of smaller browser games
               made for quick and fun sessions.
             </p>
 
-            <a href="#" class="game-button">
+            <a
+              href="#"
+              class="game-button"
+            >
               COMING SOON
             </a>
 
@@ -737,7 +1029,9 @@
         </div>
 
 
-        <!-- NEXT GAME -->
+
+        <!-- GAME 03 -->
+
         <div class="game-card small">
 
           <div class="game-number">
@@ -750,14 +1044,19 @@
               CLASSIFIED
             </div>
 
-            <h3>NEXT PROJECT</h3>
+            <h3>
+              NEXT PROJECT
+            </h3>
 
             <p>
               Another game is already being planned.
               More information will be revealed later.
             </p>
 
-            <a href="#" class="game-button">
+            <a
+              href="#"
+              class="game-button"
+            >
               STAY TUNED
             </a>
 
@@ -767,21 +1066,34 @@
 
         </div>
 
+
       </div>
 
+
+
+      <!-- FUTURE GAMES -->
 
       <div class="games-bottom">
 
         <div>
-          <strong>MORE GAMES ARE COMING.</strong>
+
+          <strong>
+            UP TO 10 GAMES.
+          </strong>
+
           <br>
+
           <span>
-            This page will grow as VELTRIX grows.
+            More games will appear here as VELTRIX grows.
           </span>
+
         </div>
 
-        <a href="#contact" class="game-button">
-          WORK WITH US →
+        <a
+          href="#"
+          class="game-button"
+        >
+          MORE COMING →
         </a>
 
       </div>
@@ -789,8 +1101,13 @@
     </section>
 
 
+
     <!-- ABOUT -->
-    <section class="about" id="about">
+
+    <section
+      class="about"
+      id="about"
+    >
 
       <div class="about-text">
 
@@ -804,13 +1121,13 @@
         </h2>
 
         <p>
-          VELTRIX is an independent brand created to turn
-          ideas into real digital projects.
+          VELTRIX is an independent brand created
+          to turn ideas into real digital projects.
         </p>
 
         <p>
-          We start small, learn as we build and keep improving
-          every project along the way.
+          We start small, learn as we build and keep
+          improving every project along the way.
         </p>
 
       </div>
@@ -819,8 +1136,11 @@
       <div class="big-quote">
 
         START WITH<br>
+
         <span>NOTHING.</span><br>
+
         BUILD<br>
+
         EVERYTHING.
 
       </div>
@@ -828,8 +1148,13 @@
     </section>
 
 
+
     <!-- CONTACT -->
-    <section class="contact" id="contact">
+
+    <section
+      class="contact"
+      id="contact"
+    >
 
       <div class="section-label">
         04 / CONTACT
@@ -844,16 +1169,22 @@
         New projects, games and ideas are on the way.
       </p>
 
-      <a class="button primary" href="mailto:VeltrixAE@hotmail.com">
+      <a
+        class="button primary"
+        href="mailto:VeltrixAE@hotmail.com"
+      >
         CONTACT VELTRIX
       </a>
 
     </section>
 
+
   </main>
 
 
+
   <!-- FOOTER -->
+
   <footer>
 
     <div>
@@ -865,6 +1196,7 @@
     </div>
 
   </footer>
+
 
 </body>
 </html>
