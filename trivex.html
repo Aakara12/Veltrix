@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TRIVEX — VELTRIX</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #070707;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+
+      background: rgba(7,7,7,0.82);
+      backdrop-filter: blur(16px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+
+      z-index: 1000;
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 4px;
+    }
+
+    .brand span {
+      color: #ff2020;
+    }
+
+    .back {
+      color: #888;
+      text-decoration: none;
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+
+      transition: 0.25s;
+    }
+
+    .back:hover {
+      color: #ff2020;
+    }
+
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 120px 7% 80px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .red-glow {
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      right: -180px;
+      top: 60px;
+
+      background: #e00000;
+
+      opacity: 0.14;
+
+      filter: blur(190px);
+
+      border-radius: 50%;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+      background-size: 70px 70px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 900px;
+    }
+
+    .status {
+      display: inline-block;
+
+      color: #ff3030;
+
+      border: 1px solid rgba(255,32,32,0.4);
+
+      padding: 9px 13px;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(80px, 16vw, 190px);
+
+      line-height: 0.8;
+
+      letter-spacing: -9px;
+
+      font-weight: 950;
+
+      margin-bottom: 35px;
+    }
+
+    .hero h1 span {
+      color: #ff2020;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      color: #999;
+
+      font-size: 19px;
+
+      line-height: 1.7;
+
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 16px 26px;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+
+      transition: 0.25s;
+    }
+
+    .primary {
+      background: #ff2020;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #ff4545;
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      border: 1px solid #333;
+      color: white;
+    }
+
+    .secondary:hover {
+      border-color: #ff2020;
+      color: #ff2020;
+    }
+
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      border-top: 1px solid #202020;
+      border-bottom: 1px solid #202020;
+
+      background: #0b0b0b;
+    }
+
+    .stat {
+      padding: 35px 7%;
+
+      border-right: 1px solid #202020;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      color: #ff2020;
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #666;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+    }
+
+
+    /* SECTIONS */
+
+    section.content {
+      padding: 120px 7%;
+    }
+
+    .label {
+      color: #ff2020;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: 4px;
+
+      margin-bottom: 15px;
+    }
+
+    .title {
+      font-size: clamp(40px, 6vw, 72px);
+
+      letter-spacing: -3px;
+
+      margin-bottom: 50px;
+    }
+
+
+    /* MODES */
+
+    .modes {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .mode {
+      min-height: 240px;
+
+      padding: 30px;
+
+      background: #101010;
+
+      border: 1px solid #222;
+
+      position: relative;
+
+      overflow: hidden;
+
+      transition: 0.3s;
+    }
+
+    .mode:hover {
+      transform: translateY(-7px);
+
+      border-color: #ff2020;
+    }
+
+    .mode-number {
+      color: #333;
+
+      font-size: 45px;
+
+      font-weight: 900;
+
+      position: absolute;
+
+      top: 20px;
+      right: 25px;
+    }
+
+    .mode h3 {
+      font-size: 25px;
+
+      margin-top: 80px;
+
+      margin-bottom: 12px;
+    }
+
+    .mode p {
+      color: #777;
+
+      line-height: 1.6;
+    }
+
+
+    /* PROGRESSION */
+
+    .progression {
+      background: #0d0d0d;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .progression-text p {
+      color: #888;
+
+      line-height: 1.8;
+
+      font-size: 17px;
+
+      margin-bottom: 20px;
+    }
+
+    .progress-box {
+      background: #101010;
+
+      border: 1px solid #242424;
+
+      padding: 35px;
+    }
+
+    .progress-row {
+      margin-bottom: 28px;
+    }
+
+    .progress-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .progress-info {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-bottom: 9px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+    }
+
+    .progress-info span:last-child {
+      color: #ff2020;
+    }
+
+    .bar {
+      height: 5px;
+
+      background: #222;
+
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+
+      height: 100%;
+
+      background: #ff2020;
+    }
+
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+
+      padding: 150px 7%;
+    }
+
+    .cta h2 {
+      font-size: clamp(45px, 7vw, 90px);
+
+      letter-spacing: -5px;
+
+      margin-bottom: 25px;
+    }
+
+    .cta h2 span {
+      color: #ff2020;
+    }
+
+    .cta p {
+      color: #777;
+
+      max-width: 550px;
+
+      margin: 0 auto 35px;
+
+      line-height: 1.7;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 7%;
+
+      border-top: 1px solid #202020;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      color: #555;
+
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: #aaa;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero h1 {
+        letter-spacing: -5px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: none;
+
+        border-bottom: 1px solid #202020;
+      }
+
+      .modes {
+        grid-template-columns: 1fr;
+      }
+
+      .progression {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+
+      section.content {
+        padding: 85px 5%;
+      }
+
+      footer {
+        flex-direction: column;
+
+        gap: 10px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- NAV -->
+
+  <nav>
+
+    <a href="index.html" class="brand">
+      VEL<span>TRIX</span>
+    </a>
+
+    <a href="index.html#games" class="back">
+      ← BACK TO GAMES
+    </a>
+
+  </nav>
+
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="grid"></div>
+
+    <div class="red-glow"></div>
+
+    <div class="hero-content">
+
+      <div class="status">
+        IN DEVELOPMENT
+      </div>
+
+      <h1>
+        TRI<span>VEX</span>
+      </h1>
+
+      <p class="hero-description">
+        A competitive browser game built around
+        quick matches, strategy and progression.
+        Created from the ground up by VELTRIX.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#" class="button primary">
+          PLAY NOW
+        </a>
+
+        <a href="#about" class="button secondary">
+          DISCOVER TRIVEX
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <div class="stat-number">
+        01
+      </div>
+
+      <div class="stat-label">
+        VELTRIX GAME
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-number">
+        ∞
+      </div>
+
+      <div class="stat-label">
+        POSSIBILITIES
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-number">
+        2026
+      </div>
+
+      <div class="stat-label">
+        DEVELOPMENT START
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ABOUT -->
+
+  <section class="content" id="about">
+
+    <div class="label">
+      01 / THE GAME
+    </div>
+
+    <h2 class="title">
+      BUILT TO COMPETE.
+    </h2>
+
+    <p style="
+      max-width:750px;
+      color:#888;
+      font-size:18px;
+      line-height:1.8;
+    ">
+      TRIVEX is designed as a fast and competitive
+      browser experience. Players will be able to
+      enter matches, develop their skills and progress
+      through the game.
+    </p>
+
+  </section>
+
+
+
+  <!-- GAME MODES -->
+
+  <section class="content">
+
+    <div class="label">
+      02 / GAME MODES
+    </div>
+
+    <h2 class="title">
+      CHOOSE YOUR GAME.
+    </h2>
+
+
+    <div class="modes">
+
+      <div class="mode">
+
+        <div class="mode-number">
+          01
+        </div>
+
+        <h3>QUICK MATCH</h3>
+
+        <p>
+          Jump straight into a fast match
+          and test your skills.
+        </p>
+
+      </div>
+
+
+      <div class="mode">
+
+        <div class="mode-number">
+          02
+        </div>
+
+        <h3>COMPETITIVE</h3>
+
+        <p>
+          Compete against other players
+          and climb through progression.
+        </p>
+
+      </div>
+
+
+      <div class="mode">
+
+        <div class="mode-number">
+          03
+        </div>
+
+        <h3>MORE TO COME</h3>
+
+        <p>
+          New modes and gameplay ideas
+          will be added as TRIVEX develops.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- PROGRESSION -->
+
+  <section class="content progression">
+
+    <div class="progression-text">
+
+      <div class="label">
+        03 / DEVELOPMENT
+      </div>
+
+      <h2 class="title">
+        BUILDING<br>
+        THE FUTURE.
+      </h2>
+
+      <p>
+        TRIVEX is still being developed.
+        The game will continue to evolve as
+        new mechanics, features and ideas
+        are tested.
+      </p>
+
+    </div>
+
+
+    <div class="progress-box">
+
+      <div class="progress-row">
+
+        <div class="progress-info">
+          <span>CORE GAME</span>
+          <span>IN DEVELOPMENT</span>
+        </div>
+
+        <div class="bar">
+          <span style="width:45%"></span>
+        </div>
+
+      </div>
+
+
+      <div class="progress-row">
+
+        <div class="progress-info">
+          <span>GAME MODES</span>
+          <span>PLANNING</span>
+        </div>
+
+        <div class="bar">
+          <span style="width:25%"></span>
+        </div>
+
+      </div>
+
+
+      <div class="progress-row">
+
+        <div class="progress-info">
+          <span>PROGRESSION</span>
+          <span>PLANNING</span>
+        </div>
+
+        <div class="bar">
+          <span style="width:20%"></span>
+        </div>
+
+      </div>
+
+
+      <div class="progress-row">
+
+        <div class="progress-info">
+          <span>RELEASE</span>
+          <span>COMING SOON</span>
+        </div>
+
+        <div class="bar">
+          <span style="width:5%"></span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      READY TO <span>PLAY?</span>
+    </h2>
+
+    <p>
+      TRIVEX is currently in development.
+      Check back later to play the first VELTRIX game.
+    </p>
+
+    <a href="index.html" class="button secondary">
+      ← BACK TO VELTRIX
+    </a>
+
+  </section>
+
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      © 2026 <strong>VELTRIX</strong>
+    </div>
+
+    <div>
+      TRIVEX — A VELTRIX PROJECT
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
