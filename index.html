@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELTRIX — Build It. Grow It. Own It.</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      background: rgba(8, 8, 8, 0.82);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: white;
+    }
+
+    .logo span {
+      color: #ff2020;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: #ff3030;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 7% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      background: #e00000;
+      filter: blur(180px);
+      opacity: 0.13;
+      right: -150px;
+      top: 50px;
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      color: #ff2929;
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: 800;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(65px, 12vw, 150px);
+      line-height: 0.85;
+      letter-spacing: -7px;
+      font-weight: 950;
+      margin-bottom: 35px;
+    }
+
+    h1 span {
+      color: #ff2020;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: #aaa;
+      font-size: 19px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 15px 25px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 1px;
+      transition: 0.25s;
+    }
+
+    .primary {
+      background: #ff2020;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #ff4545;
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      border: 1px solid #333;
+      color: white;
+    }
+
+    .secondary:hover {
+      border-color: #ff2020;
+      color: #ff2020;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 120px 7%;
+    }
+
+    .section-label {
+      color: #ff2020;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 72px);
+      letter-spacing: -3px;
+      margin-bottom: 55px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #101010;
+      border: 1px solid #202020;
+      padding: 35px;
+      min-height: 260px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 0;
+      background: #ff2020;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #333;
+    }
+
+    .card:hover::before {
+      height: 100%;
+    }
+
+    .number {
+      color: #555;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 45px;
+    }
+
+    .card h3 {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #0d0d0d;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #999;
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .big-quote {
+      font-size: clamp(35px, 5vw, 65px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .big-quote span {
+      color: #ff2020;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: #888;
+      margin: 0 auto 30px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 35px 7%;
+      border-top: 1px solid #202020;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: #aaa;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      section {
+        padding: 85px 5%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">VEL<span>TRIX</span></div>
+
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#games">GAMES</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="glow"></div>
+
+      <div class="hero-content">
+        <div class="tag">INDEPENDENT CREATIVE BRAND</div>
+
+        <h1>
+          BUILD IT.<br>
+          <span>GROW IT.</span><br>
+          OWN IT.
+        </h1>
+
+        <p>
+          VELTRIX is an independent creative brand building
+          games, digital projects and new ideas from the ground up.
+        </p>
+
+        <div class="buttons">
+          <a class="button primary" href="#projects">EXPLORE PROJECTS</a>
+          <a class="button secondary" href="#about">ABOUT VELTRIX</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="projects">
+      <div class="section-label">01 / PROJECTS</div>
+      <h2 class="section-title">WHAT WE'RE BUILDING.</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="number">01</div>
+          <h3>Digital Projects</h3>
+          <p>
+            Websites, online platforms and creative digital ideas
+            built from scratch.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">02</div>
+          <h3>Games</h3>
+          <p>
+            Browser games and interactive experiences designed
+            to be simple, fun and addictive.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">03</div>
+          <h3>New Ideas</h3>
+          <p>
+            We experiment, test and turn ideas into real projects
+            instead of leaving them on paper.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="games">
+      <div class="section-label">02 / GAMES</div>
+      <h2 class="section-title">PLAY SOMETHING.</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="number">COMING SOON</div>
+          <h3>VELTRIX GAMES</h3>
+          <p>
+            Our first collection of browser games is currently
+            being developed.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">PROJECT 02</div>
+          <h3>TRIVEX</h3>
+          <p>
+            A competitive game project built around quick
+            matches, strategy and progression.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">MORE</div>
+          <h3>IN DEVELOPMENT</h3>
+          <p>
+            More projects are coming. This space will grow
+            as VELTRIX grows.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="about" id="about">
+
+      <div class="about-text">
+        <div class="section-label">03 / ABOUT</div>
+
+        <h2 class="section-title">TWO MINDS.<br>ONE VISION.</h2>
+
+        <p>
+          VELTRIX is an independent brand created to turn
+          ideas into real digital projects.
+        </p>
+
+        <p>
+          We start small, learn as we build and keep improving
+          every project along the way.
+        </p>
+      </div>
+
+      <div class="big-quote">
+        START WITH<br>
+        <span>NOTHING.</span><br>
+        BUILD<br>
+        EVERYTHING.
+      </div>
+
+    </section>
+
+
+    <section class="contact">
+
+      <div class="section-label">04 / CONTACT</div>
+
+      <h2 class="section-title">LET'S BUILD.</h2>
+
+      <p>
+        VELTRIX is just getting started.
+        New projects, games and ideas are on the way.
+      </p>
+
+      <a class="button primary" href="mailto:veltrix@example.com">
+        CONTACT VELTRIX
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div>© 2026 <strong>VELTRIX</strong></div>
+    <div>BUILD IT. GROW IT. OWN IT.</div>
+  </footer>
+
+</body>
+</html>
